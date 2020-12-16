@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Modal, Form, Button, Row, Col } from 'react-bootstrap';
 import AddCourse from "./addCourse";
+import {Link} from 'react-router-dom';
+
 
 const DeleteCourse = ({ showModalDelete, toggleModalDelete, details, deletecourses }) => {
 
@@ -18,9 +20,11 @@ const DeleteCourse = ({ showModalDelete, toggleModalDelete, details, deletecours
                 <Button variant="secondary" onClick={toggleModalDelete}>
                     Cancel
                 </Button>
-                <Button variant="danger" onClick={deletecourses(details.id)}>
+                <Link to ="/">
+                <Button variant="danger" onClick={() => deletecourses(details.id)}>
                     Delete
                  </Button>
+                 </Link>
 
             </Modal.Footer>
         </Modal>

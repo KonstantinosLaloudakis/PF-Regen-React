@@ -4,6 +4,8 @@ import { Form } from 'react-bootstrap';
 import { Button } from 'reactstrap';
 import EditCourse from './EditCourse';
 import CourseDetails from './CourseDetails';
+import {Link} from 'react-router-dom';
+
 
 
 export default class AddCourse extends React.Component {
@@ -178,10 +180,11 @@ export default class AddCourse extends React.Component {
                     <Form.Label>Early Bird:</Form.Label>
                     <Form.Control type="text" name="early_bird" value={this.state.price.early_bird} onChange={this.handlePrice} />
                 </Form.Group>
-
+                
                 <Button variant="primary" type="submit">
                     Submit
                  </Button>
+                 
             </Form>
         );
     

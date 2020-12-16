@@ -61,28 +61,6 @@
       "description": "<p>This is a certified program by Athens Tech College, the first educational institution in Greece that specialises in computer science and ICT studies.</p><p>Participant’s registration (payment’s completion) implies full compliance and acceptance of Code.Learn Terms &amp; Conditions.</p>"
     },
     {
-      "title": "New Course",
-      "price": [],
-      "dates": [],
-      "duration": "",
-      "open": false,
-      "instructors": [],
-      "description": "",
-      "imagePath": "",
-      "id": "YKs7CF-"
-    },
-    {
-      "title": "C++",
-      "price": [],
-      "dates": [],
-      "duration": "2 days",
-      "open": false,
-      "instructors": [],
-      "description": "",
-      "imagePath": "",
-      "id": "5swhr13"
-    },
-    {
       "title": "Python",
       "price": [],
       "dates": [],
@@ -92,6 +70,30 @@
       "description": "",
       "imagePath": "",
       "id": "DIM2mUo"
+    },
+    {
+      "title": "JS",
+      "price": [],
+      "dates": [],
+      "duration": "",
+      "open": true,
+      "instructors": [],
+      "description": "Smthn",
+      "imagePath": "",
+      "id": "LFLPe5y"
+    },
+    {
+      "title": "ywy",
+      "price": [],
+      "dates": [],
+      "duration": "",
+      "open": false,
+      "instructors": [
+        "01"
+      ],
+      "description": "",
+      "imagePath": "",
+      "id": "CwGFcLp"
     }
   ],
   "instructors": [

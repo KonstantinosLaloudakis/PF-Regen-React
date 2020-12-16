@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 import AddCourse from "./addCourse";
 import EditCourse from "./EditCourse";
 import DeleteCourse from "./DeleteCourse";
-
+import {Router, Route, Link, RouteHandler} from 'react-router';
 import Card from 'react-bootstrap/Card';
 
 
@@ -82,6 +82,7 @@ const CourseDetails = () => {
 
             
             toggleModalDelete()
+           
     }
 
     if (error) {
@@ -128,10 +129,11 @@ const CourseDetails = () => {
                             details={coursedetails}
                             editcourses={editcourses} />
 
-                      {/*   <DeleteCourse showModalDelete={showModalDelete}
+                        <DeleteCourse showModalDelete={showModalDelete}
                             toggleModalDelete={toggleModalDelete}
                             details={coursedetails}
-                            deletecourses={deletecourses} /> */}
+                            deletecourses={deletecourses} 
+                            />
 
                     </div>
 
