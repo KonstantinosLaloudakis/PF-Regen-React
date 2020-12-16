@@ -15,6 +15,8 @@ export default class AddCourse extends React.Component {
         super(props);
         if( Object.keys(props).length === 0){
         this.state = {
+
+            id: '',
             title: '',
             price: [],
             dates: [],
@@ -22,8 +24,8 @@ export default class AddCourse extends React.Component {
             open: false,
             instructors: [],
             description: '',
-            imagePath: ''
-
+            imagePath: '',
+            books:[]
         };
         this.flag=false;
     }
@@ -45,6 +47,15 @@ export default class AddCourse extends React.Component {
         console.log(this.state);
         
     }
+
+    componentDidMount() {
+        fetch('http://localhost:3000/courses')
+        .then((response) => response.json())
+        .then(courses=> {
+            this.setState({ books: courses });
+        });
+    }
+
     
     myChangeHandler = (event) => {
         let nam = event.target.name;
@@ -97,11 +108,27 @@ export default class AddCourse extends React.Component {
     
     submit = e => {
         e.preventDefault();
+        console.log(this.state.books);
         if( !this.flag){
-        
-        fetch("http://localhost:3000/courses/", {
+        console.log(typeof this.state.books[0].id);
+        let ids=this.state.books.map(({id}) => Number(id));
+        console.log(Math.max(...ids));
+        this.state.id=Math.max(...ids)+1;
+        console.log(this.state.id);
+                fetch("http://localhost:3000/courses/", {
             method: 'POST',
-            body: JSON.stringify(this.state),
+            body: JSON.stringify({
+                id:this.state.id,
+                title:this.state.title,
+                price:this.state.price,
+                dates:this.state.dates,
+                duration:this.state.duration,
+                open:this.state.open,
+                instructors:this.state.instructors,
+                description:this.state.description,
+                imagePath:this.state.imagePath
+
+            }),
             headers: { 'Content-Type': 'application/json' },
         })
             .then(res => res.json())
