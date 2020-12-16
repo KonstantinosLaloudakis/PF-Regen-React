@@ -108,14 +108,12 @@ export default class AddCourse extends React.Component {
     
     submit = e => {
         e.preventDefault();
-        console.log(this.state.books);
         if( !this.flag){
-        console.log(typeof this.state.books[0].id);
         let ids=this.state.books.map(({id}) => Number(id));
-        console.log(Math.max(...ids));
         this.state.id=Math.max(...ids)+1;
-        console.log(this.state.id);
-                fetch("http://localhost:3000/courses/", {
+    this.state.id= ("0" +this.state.id).slice(-2);
+    //checkvalues()            
+    fetch("http://localhost:3000/courses/", {
             method: 'POST',
             body: JSON.stringify({
                 id:this.state.id,
@@ -133,6 +131,7 @@ export default class AddCourse extends React.Component {
         })
             .then(res => res.json())
             .then(json => console.log(json))
+            .then(<Link to= "/"/>)
     }
     else{
         this.props.editcourses(this.state, this.id)
@@ -156,8 +155,7 @@ export default class AddCourse extends React.Component {
             <Form onSubmit={this.submit}>
                 <Form.Group controlId="Title">
                     <Form.Label>Title:</Form.Label>
-                    {console.log("mesa sto title")}
-                    <Form.Control type="text" name="title" placeholder="Title" value={this.state.title} onChange={this.myChangeHandler} />
+                    <Form.Control required type="text" name="title" placeholder="Title" value={this.state.title} onChange={this.myChangeHandler} />
 
                 </Form.Group>
 
@@ -207,10 +205,11 @@ export default class AddCourse extends React.Component {
                     <Form.Label>Early Bird:</Form.Label>
                     <Form.Control type="text" name="early_bird" value={this.state.price.early_bird} onChange={this.handlePrice} />
                 </Form.Group>
-                
+               
                 <Button variant="primary" type="submit">
                     Submit
                  </Button>
+                 
                  
             </Form>
         );

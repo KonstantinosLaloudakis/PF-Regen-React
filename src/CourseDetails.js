@@ -62,8 +62,7 @@ const CourseDetails = () => {
         })
             .then(res => res.json())
             .then(json => console.log(json))
-        console.log(data);
-
+        
         setCourses(data, id)
         toggleModal()
     }
@@ -71,8 +70,7 @@ const CourseDetails = () => {
     const deletecourses = (id) => {
       
 
-        console.log("DELETECOURSESSS!!!!");
-    
+      
         fetch(`http://localhost:3000/courses/${id}`, {
             method: 'DELETE'
 

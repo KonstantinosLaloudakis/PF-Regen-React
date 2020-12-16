@@ -98,6 +98,36 @@
         "01"
       ],
       "description": "<p>This is a certified program by Athens Tech College, the first educational institution in Greece that specialises in computer science and ICT studies.</p><p>Participant’s registration (payment’s completion) implies full compliance and acceptance of Code.Learn Terms &amp; Conditions.</p>"
+    },
+    {
+      "id": "05",
+      "title": "C++",
+      "price": {
+        "normal": "1500",
+        "early_bird": "700"
+      },
+      "dates": {
+        "start_date": "2020-12-16",
+        "end_date": "2021-01-05"
+      },
+      "duration": "4 Fridays ",
+      "open": false,
+      "instructors": [
+        "01"
+      ],
+      "description": "",
+      "imagePath": ""
+    },
+    {
+      "id": "06",
+      "title": "Biology",
+      "price": [],
+      "dates": [],
+      "duration": "",
+      "open": false,
+      "instructors": [],
+      "description": "",
+      "imagePath": ""
     }
   ],
   "instructors": [
