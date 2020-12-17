@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Modal, Form, Button, Row, Col } from 'react-bootstrap';
+import React from 'react';
+import { Modal, Button} from 'react-bootstrap';
 import AddCourse from "./addCourse";
 
 const EditCourse = ({ showModal, toggleModal, details, editcourses }) => {
@@ -8,7 +8,7 @@ const EditCourse = ({ showModal, toggleModal, details, editcourses }) => {
     return (
         <Modal show={showModal} onHide={toggleModal}>
             <Modal.Header closeButton>
-                <Modal.Title>Edit Course</Modal.Title>
+                <Modal.Title>{`Edit Course: ${details.title}`}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <AddCourse details={details} editcourses = {editcourses}/>

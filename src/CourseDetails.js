@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import CustomNavbar from "./App";
-import Image from 'react-bootstrap/Image';
 import { Markup } from 'interweave';
 import Instructors from "./Instructors";
 import Button from 'react-bootstrap/Button';
-import AddCourse from "./addCourse";
 import EditCourse from "./EditCourse";
 import DeleteCourse from "./DeleteCourse";
-import {Router, Route, Link, RouteHandler} from 'react-router';
 import Card from 'react-bootstrap/Card';
 
 

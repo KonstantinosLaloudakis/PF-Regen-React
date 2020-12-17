@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import HomePage from "./HomePage";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import CustomNavbar from "./App";
-import CourseDetails from "./CourseDetails";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddCourse from "./addCourse";
 import AllCourses from "./AllCourses";
+import CustomNavbar from "./App";
+import CourseDetails from "./CourseDetails";
+import HomePage from "./HomePage";
+import "./index.css";
 
 
 const IndexStructure = () => {

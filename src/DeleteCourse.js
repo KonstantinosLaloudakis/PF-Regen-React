@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { Modal, Form, Button, Row, Col } from 'react-bootstrap';
-import AddCourse from "./addCourse";
-import {Link} from 'react-router-dom';
+import React from 'react';
+import { Button, Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 const DeleteCourse = ({ showModalDelete, toggleModalDelete, details, deletecourses }) => {

@@ -1,10 +1,8 @@
-import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
+import React from 'react';
 import { Form } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 import { Button } from 'reactstrap';
-import EditCourse from './EditCourse';
-import CourseDetails from './CourseDetails';
-import {Link, Redirect} from 'react-router-dom';
 
 
 
@@ -158,7 +156,10 @@ export default class AddCourse extends React.Component {
             <Redirect to="/" />
             )}
         return (
-            <Form onSubmit={this.submit}>
+            <div className="myform">
+                <br/>
+                {!this.flag && <h1> Add Course</h1>}
+            <Form onSubmit={this.submit} >
                 <Form.Group controlId="Title">
                     <Form.Label>Title:</Form.Label>
                     <Form.Control required type="text" name="title" placeholder="Title" value={this.state.title} onChange={this.myChangeHandler} />
@@ -167,7 +168,7 @@ export default class AddCourse extends React.Component {
 
                 <Form.Group controlId="Duration">
                     <Form.Label>Duration</Form.Label>
-                    <Form.Control type="text" name="duration" placeholder="Duration" value={this.state.duration} onChange={this.myChangeHandler} />
+                    <Form.Control required type="text" name="duration" placeholder="Duration" value={this.state.duration} onChange={this.myChangeHandler} />
                 </Form.Group>
 
                 <Form.Group controlId="Image">
@@ -178,6 +179,7 @@ export default class AddCourse extends React.Component {
                 <Form.Group >
                     <Form.Check type="checkbox" label="Bookable" name="open" onChange={this.handleCheckbox} defaultChecked={this.state.open} />
                 </Form.Group>
+                <hr/>
                 <h1>Instructors</h1>
 
                 <Form.Group >
@@ -187,29 +189,30 @@ export default class AddCourse extends React.Component {
                     <Form.Check type="checkbox" label="Yiannis Nikolakopoulos" name="yiannis" onChange={this.handleInstructors} defaultChecked={this.checkInstructor("02")}/>
                 </Form.Group>
 
-                <hr></hr>
+                <hr/>
+                <br/>
                 <Form.Group >
                     <Form.Label>Description</Form.Label>
-                    <Form.Control type="text" name="description" value={this.state.description} onChange={this.myChangeHandler} />
+                    <Form.Control as="textarea"  rows={3} name="description" value={this.state.description} onChange={this.myChangeHandler} />
                 </Form.Group>
 
                 <h1>Dates</h1>
                 <Form.Group >
                     <Form.Label>Start date:</Form.Label>
-                    <Form.Control type="date" name="start_date" value={this.state.dates.start_date} onChange={this.handleDates} />
+                    <Form.Control type="date" name="start_date"  value={this.state.dates.start_date} onChange={this.handleDates} />
                 </Form.Group>
                 <Form.Group >
                     <Form.Label>End date:</Form.Label>
-                    <Form.Control type="date" name="end_date" value={this.state.dates.end_date} onChange={this.handleDates} />
+                    <Form.Control type="date" name="end_date"  value={this.state.dates.end_date} onChange={this.handleDates} />
                 </Form.Group>
                 <h1>Price</h1>
                 <Form.Group >
                     <Form.Label>Normal:</Form.Label>
-                    <Form.Control type="text" name="normal" value={this.state.price.normal} onChange={this.handlePrice} />
+                    <Form.Control required type="text" name="normal" placeholder="0" value={this.state.price.normal} onChange={this.handlePrice} />
                 </Form.Group>
                 <Form.Group >
                     <Form.Label>Early Bird:</Form.Label>
-                    <Form.Control type="text" name="early_bird" value={this.state.price.early_bird} onChange={this.handlePrice} />
+                    <Form.Control required type="text" name="early_bird" placeholder="0" value={this.state.price.early_bird} onChange={this.handlePrice} />
                 </Form.Group>
                
                 <Button variant="primary" type="submit">
@@ -218,6 +221,7 @@ export default class AddCourse extends React.Component {
                  
                  
             </Form>
+            </div>
         );
     
     }

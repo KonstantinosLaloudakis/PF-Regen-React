@@ -1,8 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import CustomNavbar from "./App";
-import Image from 'react-bootstrap/Image';
-import { Markup } from 'interweave';
+import React, { useEffect, useState } from "react";
 
 const Instructors = ({ ids }) => {
 
