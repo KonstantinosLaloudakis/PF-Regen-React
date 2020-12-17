@@ -4,7 +4,7 @@ import { Form } from 'react-bootstrap';
 import { Button } from 'reactstrap';
 import EditCourse from './EditCourse';
 import CourseDetails from './CourseDetails';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 
 
 
@@ -25,7 +25,8 @@ export default class AddCourse extends React.Component {
             instructors: [],
             description: '',
             imagePath: '',
-            books:[]
+            books:[],
+            redirecttohome: false
         };
         this.flag=false;
     }
@@ -131,7 +132,7 @@ export default class AddCourse extends React.Component {
         })
             .then(res => res.json())
             .then(json => console.log(json))
-            .then(<Link to= "/"/>)
+            this.setState({redirecttohome:true});
     }
     else{
         this.props.editcourses(this.state, this.id)
@@ -151,6 +152,11 @@ export default class AddCourse extends React.Component {
     }} */
     
     render() {
+        const redirect=this.state.redirecttohome;
+        if(redirect){
+            return(
+            <Redirect to="/" />
+            )}
         return (
             <Form onSubmit={this.submit}>
                 <Form.Group controlId="Title">
