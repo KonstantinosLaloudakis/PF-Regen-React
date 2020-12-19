@@ -3,7 +3,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
-
 const CustomNavbar = () => {
     return (
         <Navbar bg="dark" variant="dark">
@@ -13,9 +12,7 @@ const CustomNavbar = () => {
                 <Nav.Link href="/addCourse">Add new course</Nav.Link>
             </Nav>
         </Navbar>
-
     );
-
 };
 
 export default CustomNavbar;

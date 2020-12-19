@@ -35,5 +35,4 @@ const IndexStructure = () => {
     )
 }
 
-
 ReactDOM.render(<Router> <IndexStructure /> </Router>, document.getElementById("root"));

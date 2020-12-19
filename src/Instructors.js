@@ -7,7 +7,6 @@ const Instructors = ({ ids }) => {
     }, []);
 
     const [instructorsArray, setInstructors] = useState([]);
-    //let instructorsArray = [];
     const [error, setError] = useState(null);
     const fetchIds = () => {
         fetch(`http://localhost:3000/instructors`)
@@ -16,8 +15,6 @@ const Instructors = ({ ids }) => {
 
                 (result) => {
                     setInstructors(result);
-                    /* (result) => {
-                      instructorsArray.push(result)   */
                 },
                 (error) => {
                     setError(error);
@@ -26,12 +23,8 @@ const Instructors = ({ ids }) => {
             )
 
     }
-    console.log(instructorsArray);
-    instructorsArray.map(instructor => {
-        if (ids.indexOf(instructor.id) > -1) {
-            console.log(instructor.id);
-        }
-    })
+    
+   
 
     if (error) {
         return <div>Error:{error.message}</div>;
@@ -39,8 +32,6 @@ const Instructors = ({ ids }) => {
     else {
         if (!instructorsArray.length) { return <div> Loading...</div> }
         else {
-
-            console.log(instructorsArray);
 
             return (
 
@@ -58,7 +49,6 @@ const Instructors = ({ ids }) => {
                                         <br></br>
                                         {`${instructor.bio}`}
                                     </p>
-
                                 </div>
                             )
                         }

@@ -9,10 +9,8 @@ import DeleteCourse from "./DeleteCourse";
 import Card from 'react-bootstrap/Card';
 
 
-
 const CourseDetails = () => {
     let { id } = useParams();
-    console.log({ id });
     const [showModal, setShowModal] = useState(false);
     const [showModalDelete, setShowModalDelete] = useState(false);
 
@@ -93,7 +91,8 @@ const CourseDetails = () => {
                 <React.Fragment>
                     <div className="customBackground">
                         <CustomNavbar />
-                        <Card className="coursecard" style={{ width: '45rem' }}>
+
+                        <Card className="coursecard" style={{ width: '45rem'}}   border="secondary">
                             <h3>{coursedetails.title} ({id})</h3>
                             <Card.Img variant="top" src={coursedetails.imagePath} />
                             <Card.Body>
@@ -104,7 +103,7 @@ const CourseDetails = () => {
                                      <nav className="float-right">Duration: {coursedetails.duration} </nav>
                                         <br></br>
                                       Bookable: {(coursedetails.open) ? <img src='../check.png' alt="true" height="50" width="50" /> : <img src='../false.png' alt="false" height="50" width="50" />}
-                                        <nav className="float-right"> Dates: {coursedetails.dates.start_date} - {coursedetails.dates.end_date}</nav>
+                                        <nav className="float-right"> Dates: {new Intl.DateTimeFormat('en-GB').format(new Date(coursedetails.dates.start_date))}  -  {new Intl.DateTimeFormat('en-GB').format(new Date(coursedetails.dates.end_date))}</nav>
                                     </nav>
                                     <Markup content={coursedetails.description} />
                                     <hr></hr>
@@ -116,8 +115,9 @@ const CourseDetails = () => {
                                 <Button className="float-right" variant="danger" outline onClick={toggleModalDelete}>Delete</Button>
 
                             </Card.Body>
-
                         </Card>
+                        <br/>
+
                         <EditCourse
                             showModal={showModal}
                             toggleModal={toggleModal}
@@ -132,17 +132,11 @@ const CourseDetails = () => {
 
                     </div>
 
-
-
-
-
-
                 </React.Fragment>
 
             )
         }
     }
-
 
 }
 

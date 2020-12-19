@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Jumbotron from "react-bootstrap/Jumbotron";
-import { ListGroup, ListGroupItem, Badge } from 'reactstrap';
-import CustomNavbar from "./App";
-import Table from 'react-bootstrap/Table';
+import React, { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Col from 'react-bootstrap/Col';
+import Jumbotron from "react-bootstrap/Jumbotron";
+import Table from 'react-bootstrap/Table';
+import { Link } from "react-router-dom";
+import { Badge, ListGroup, ListGroupItem } from 'reactstrap';
+import CustomNavbar from "./App";
 
 
 const HomePage = () => {
@@ -19,8 +19,6 @@ const HomePage = () => {
             <CustomJumbotron />
             <CustomList />
             <CustomTableCourses />
-
-
         </div>
     )
 }
@@ -121,21 +119,17 @@ const CustomTableCourses = () => {
                 {courses.slice(0,5).map(course => (
                     <tr>
                         <td>{course.title}</td>
-                        {console.log(course)}
                         <td>{(course.open) ? <img src='check.png' alt="true" height="50" width="50" /> : <img src='false.png' alt="false" height="50" width="50" />}</td>
                         <td>{course.price.normal}€</td>
-                        <td>{course.dates.start_date}  -  {course.dates.end_date}</td>
-                        <td><Link to={`/CourseDetails/${course.id}`}><Button color="info">View details</Button> </Link></td>
+                        <td>{new Intl.DateTimeFormat('en-GB').format(new Date(course.dates.start_date))}  -  {new Intl.DateTimeFormat('en-GB').format(new Date(course.dates.end_date))}</td>
+                        <td><Link to={`/CourseDetails/${course.id}`}><Button variant="info">View details</Button> </Link></td>
                     </tr>
                 ))}
                 <tr>
-                    <td colSpan={5}><Link to={"/AllCourses"}> <Button color="info" className="float-right">View all</Button></Link> </td>
+                    <td colSpan={5}><Link to={"/AllCourses"}> <Button variant="secondary" className="float-right">View all</Button></Link> </td>
                 </tr>
             </tbody>
-
         </Table>
     )
-
-
 };
 export default HomePage;

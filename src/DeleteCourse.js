@@ -2,9 +2,7 @@ import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-
 const DeleteCourse = ({ showModalDelete, toggleModalDelete, details, deletecourses }) => {
-
 
     return (
         <Modal show={showModalDelete} onHide={toggleModalDelete}>
