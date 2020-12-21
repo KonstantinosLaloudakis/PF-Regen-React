@@ -3,7 +3,7 @@ import { Modal, Button } from 'react-bootstrap';
 import AddCourse from "./addCourse";
 
 const EditCourse = ({ showModal, toggleModal, details, editcourses }) => {
-
+ 
     return (
         <Modal show={showModal} onHide={toggleModal}>
             <Modal.Header closeButton>

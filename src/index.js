@@ -8,30 +8,27 @@ import CourseDetails from "./CourseDetails";
 import HomePage from "./HomePage";
 import "./index.css";
 
-
+ 
 const IndexStructure = () => {
     return (
+        <React.Fragment>
+                <CustomNavbar />
         <Switch>
             <Route exact path="/">
                 <HomePage />
             </Route>
-            <Route exact path="/courses">
-                <CustomNavbar />
-            </Route>
             <Route exact path="/addCourse">
-                <CustomNavbar />
                 <AddCourse />
             </Route>
             <Route exact path="/courseDetails/:id">
                 <CourseDetails />
             </Route>
             <Route exact path="/Allcourses">
-                <CustomNavbar />
                 <AllCourses />
             </Route>
 
         </Switch>
-
+        </React.Fragment>
     )
 }
 

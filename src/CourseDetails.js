@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import CustomNavbar from "./App";
 import { Markup } from 'interweave';
-import Instructors from "./Instructors";
+import React, { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
-import EditCourse from "./EditCourse";
-import DeleteCourse from "./DeleteCourse";
 import Card from 'react-bootstrap/Card';
-
-
+import { useParams } from "react-router-dom";
+import DeleteCourse from "./DeleteCourse";
+import EditCourse from "./EditCourse";
+import Instructors from "./Instructors";
+ 
 const CourseDetails = () => {
     let { id } = useParams();
     const [showModal, setShowModal] = useState(false);
@@ -16,8 +14,23 @@ const CourseDetails = () => {
 
 
     useEffect(() => {
+        const fetchCourses = () => {
+    
+            fetch(`http://localhost:3000/courses/${id}`)
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                        setCourses(result);
+    
+                    },
+                    (error) => {
+                        setError(error);
+                    }
+                )
+    
+        }
         fetchCourses();
-    }, []);
+    }, [id]);
 
     const toggleModal = () => {
         setShowModal((showModal) => !showModal);
@@ -32,21 +45,6 @@ const CourseDetails = () => {
     const [coursedetails, setCourses] = useState(null);
     const [error, setError] = useState(null);
     const [display, setDisplay] = useState(false);
-    const fetchCourses = () => {
-
-        fetch(`http://localhost:3000/courses/${id}`)
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    setCourses(result);
-
-                },
-                (error) => {
-                    setError(error);
-                }
-            )
-
-    }
 
     const editcourses = (data, id) => {
 
@@ -89,30 +87,27 @@ const CourseDetails = () => {
 
             return (
                 <React.Fragment>
+                   
                     <div className="customBackground">
-                        <CustomNavbar />
 
                         <Card className="coursecard" style={{ width: '45rem'}}   border="secondary">
                             <h3>{coursedetails.title} ({id})</h3>
                             <Card.Img variant="top" src={coursedetails.imagePath} />
                             <Card.Body>
-
-                                <Card.Text>
-                                    <nav className="description">
+                                    <div className="description">
                                         Price: {coursedetails.price.normal} €
-                                     <nav className="float-right">Duration: {coursedetails.duration} </nav>
+                                     <div className="float-right">Duration: {coursedetails.duration} </div>
                                         <br></br>
                                       Bookable: {(coursedetails.open) ? <img src='../check.png' alt="true" height="50" width="50" /> : <img src='../false.png' alt="false" height="50" width="50" />}
-                                        <nav className="float-right"> Dates: {new Intl.DateTimeFormat('en-GB').format(new Date(coursedetails.dates.start_date))}  -  {new Intl.DateTimeFormat('en-GB').format(new Date(coursedetails.dates.end_date))}</nav>
-                                    </nav>
+                                        <div className="float-right"> Dates: {new Intl.DateTimeFormat('en-GB').format(new Date(coursedetails.dates.start_date))}  -  {new Intl.DateTimeFormat('en-GB').format(new Date(coursedetails.dates.end_date))}</div>
+                                    </div>
                                     <Markup content={coursedetails.description} />
                                     <hr></hr>
                                     <h3>Instructors: </h3>
                                     <Instructors ids={coursedetails.instructors} />
-                                </Card.Text>
-
-                                <Button variant="primary" outline onClick={toggleModal}>Edit</Button>
-                                <Button className="float-right" variant="danger" outline onClick={toggleModalDelete}>Delete</Button>
+                               
+                                <Button variant="primary"  onClick={toggleModal}>Edit</Button>
+                                <Button className="float-right" variant="danger" onClick={toggleModalDelete}>Delete</Button>
 
                             </Card.Body>
                         </Card>

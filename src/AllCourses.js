@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { Link } from "react-router-dom";
 
-
+ 
 
 const AllCourses = () => {
 
@@ -34,18 +34,18 @@ const AllCourses = () => {
     allcourses.sort(function compare(a, b) {
         var dateA = new Date(a.dates.start_date);
         var dateB = new Date(b.dates.start_date);
-        return dateA - dateB;
+        return dateB - dateA;
     }
     );
 
-    allcourses.reverse();
+    
 
     return (
 
         <CardDeck >
             <Row>
                 {allcourses.map(allcourse => (
-                    <Col sm={4}>
+                    <Col sm={4} key={allcourse.title}>
                         <Card >
                             <Card.Body>
                                 <Card.Title>{allcourse.title}</Card.Title>

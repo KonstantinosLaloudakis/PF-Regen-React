@@ -23,7 +23,7 @@ const Instructors = ({ ids }) => {
             )
 
     }
-    
+     
    
 
     if (error) {
@@ -35,20 +35,20 @@ const Instructors = ({ ids }) => {
 
             return (
 
-                <div>
+                <div >
                     {instructorsArray.map(instructor => {
                         if (ids.indexOf(instructor.id) > -1) {
                             return (
-                                <div>
+                                <div key={instructor.id}>
                                     <h3>
                                         {`${instructor.name.first}  ${instructor.name.last} (${instructor.dob})`}
                                     </h3>
                                     <br></br>
-                                    <p>
+                                    <div>
                                         {`Email: `} <a href={instructor.email}>{instructor.email}</a> {` |`}  <a href={instructor.linkedin}>Linkedin</a>
                                         <br></br>
                                         {`${instructor.bio}`}
-                                    </p>
+                                    </div>
                                 </div>
                             )
                         }

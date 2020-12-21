@@ -12,9 +12,6 @@ code {
     monospace;
 }
 
-.navbar {
-  margin-bottom: 20px;
-}
 
 
 .table.tr.td{
@@ -32,6 +29,7 @@ code {
 
 .customBackground {
   background-color: rgb(214, 214, 214);
+  padding-top: 20px;
 }
 
 .myform {

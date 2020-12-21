@@ -6,16 +6,14 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 import Table from 'react-bootstrap/Table';
 import { Link } from "react-router-dom";
 import { Badge, ListGroup, ListGroupItem } from 'reactstrap';
-import CustomNavbar from "./App";
-
+ 
 
 const HomePage = () => {
 
 
     return (
 
-        <div >
-            <CustomNavbar />
+        <div >s
             <CustomJumbotron />
             <CustomList />
             <CustomTableCourses />
@@ -58,7 +56,7 @@ const CustomList = () => {
         <ListGroup horizontal>
             {items.map(item =>
                 (
-                    <Col sm={3}>
+                    <Col sm={3} key={item.title}>
                         <ListGroupItem>
                             {item.title} : <Badge pill> {item.amount}</Badge>
 
@@ -92,14 +90,15 @@ const CustomTableCourses = () => {
                 }
             )
     }
+
+    /* sorting courses array by date */
+
     courses.sort(function compare(a, b) {
         var dateA = new Date(a.dates.start_date);
         var dateB = new Date(b.dates.start_date);
-        return dateA - dateB;
+        return dateB - dateA;
     }
     );
-
-    courses.reverse();
 
     return (
         <Table>
@@ -116,8 +115,11 @@ const CustomTableCourses = () => {
                 </tr>
             </thead>
             <tbody>
+
+                {/* display only last 5 courses */}
+
                 {courses.slice(0,5).map(course => (
-                    <tr>
+                    <tr key={course.title}>
                         <td>{course.title}</td>
                         <td>{(course.open) ? <img src='check.png' alt="true" height="50" width="50" /> : <img src='false.png' alt="false" height="50" width="50" />}</td>
                         <td>{course.price.normal}€</td>

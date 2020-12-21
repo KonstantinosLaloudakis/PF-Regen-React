@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { Button } from 'reactstrap';
 
 
+ 
 export default class AddCourse extends React.Component {
 
     constructor(props) {
@@ -22,7 +23,7 @@ export default class AddCourse extends React.Component {
                 instructors: [],
                 description: '',
                 imagePath: '',
-                books: [],
+                allcourses: [],
                 redirecttohome: false
             };
             this.flag = false;
@@ -54,9 +55,11 @@ export default class AddCourse extends React.Component {
         fetch('http://localhost:3000/courses')
             .then((response) => response.json())
             .then(courses => {
-                this.setState({ books: courses });
+                this.setState({ allcourses: courses });
             });
     }
+
+   // setting the submitted values 
 
     myChangeHandler = (event) => {
         let nam = event.target.name;
@@ -99,12 +102,16 @@ export default class AddCourse extends React.Component {
         let val = event.target.value;
         this.setState({ price: { ...this.state.price, [nam]: val } });
     }
+
+   // checking the right instructor(s) from an existing course
     checkInstructor = (id) => {
         if (this.state.instructors.indexOf(id) > -1) {
             return true;
         }
         return false;
     }
+
+    //checking values
     checkvalues = (event) => {
         event.preventDefault();
         const startdate = new Date(this.state.dates.start_date);
@@ -136,7 +143,7 @@ export default class AddCourse extends React.Component {
         else {
         //if the call happens in addcourse page, create a post request
             if (!this.flag) {
-                let ids = this.state.books.map(({ id }) => Number(id));
+                let ids = this.state.allcourses.map(({ id }) => Number(id));
                 this.state.id = Math.max(...ids) + 1;
                 this.state.id = ("0" + this.state.id).slice(-2);
                 
@@ -161,6 +168,7 @@ export default class AddCourse extends React.Component {
                 this.setState({ redirecttohome: true });
             }
 
+            //go to coursedetails
             else {
                 this.props.editcourses(this.state, this.id)
             }
